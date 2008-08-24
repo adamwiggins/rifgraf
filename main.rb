@@ -1,12 +1,21 @@
 require 'sinatra/lib/sinatra'
 
+class Point
+	attr_accessor :value, :date
+	
+	def initialize(date, value)
+		@date = date || Time.now.strftime("%Y-%m-%d %H:%I:%S")
+		@value = value
+	end
+end
+
 module Points
 	def self.data
 		@@data ||= initial_data
 	end
 	
 	def self.initial_data
-		[ OpenStruct.new(:date => '2008-01-01 13:57:21', :value => 42) ]
+		[ Point.new('2008-01-01 13:57:21', 42) ]
 	end
 end
 
@@ -19,6 +28,6 @@ get '/data.xml' do
 end
 
 post '/' do
-	Points.data << OpenStruct.new(:date => (params[:date] || Time.now.to_s), :value => params[:value])
+	Points.data << Point.new(params[:date], params[:value])
 	"ok"
 end
