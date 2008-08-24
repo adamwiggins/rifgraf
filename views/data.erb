@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chart>
+	<series>
+		<% points.each_with_index do |point, i| %>
+		<value xid="<%= i %>"><%= point.date %></value>
+		<% end %>
+	</series>
+	<graphs>
+		<graph gid="1">
+			<% points.each_with_index do |point, i| %>
+			<value xid="<%= i %>"><%= point.value %></value>
+			<% end %>
+		</graph>
+	</graphs>
+</chart>

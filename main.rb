@@ -1,26 +1,24 @@
-require 'rubygems'
-require 'sinatra'
+require 'sinatra/lib/sinatra'
+
+module Points
+	def self.data
+		@@data ||= initial_data
+	end
+	
+	def self.initial_data
+		[ OpenStruct.new(:date => '2008-01-01 13:57:21', :value => 42) ]
+	end
+end
 
 get '/' do
 	erb :index
 end
 
 get '/data.xml' do
-	a = <<EOXML
-<?xml version="1.0" encoding="UTF-8"?>
-<chart>
-	<series>
-		<value xid="0">2008-08-01</value>
-		<value xid="1">2008-08-02</value>
-		<value xid="2">2008-08-03</value>
-	</series>
-	<graphs>
-		<graph gid="1">
-			<value xid="0">5</value>
-			<value xid="1">8</value>
-			<value xid="2">7</value>
-		</graph>
-	</graphs>
-</chart>
-EOXML
+	erb :data, :locals => { :points => Points.data }
+end
+
+post '/' do
+	Points.data << OpenStruct.new(:date => (params[:date] || Time.now.to_s), :value => params[:value])
+	"ok"
 end
