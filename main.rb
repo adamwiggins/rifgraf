@@ -11,23 +11,20 @@ end
 
 module Points
 	def self.data
-		@@data ||= initial_data
-	end
-	
-	def self.initial_data
-		[ Point.new('2008-01-01 13:57:21', 42) ]
+		@@data ||= { }
 	end
 end
 
-get '/' do
-	erb :index
+get '/graphs/:id' do
+	erb :index, :locals => { :id => params[:id] }
 end
 
-get '/data.xml' do
-	erb :data, :locals => { :points => Points.data }
+get '/graphs/:id/data.xml' do
+	erb :data, :locals => { :points => Points.data[params[:id]] }
 end
 
-post '/' do
-	Points.data << Point.new(params[:date], params[:value])
+post '/graphs/:id' do
+	Points.data[params[:id]] ||= [ ]
+	Points.data[params[:id]] << Point.new(params[:date], params[:value])
 	"ok"
 end

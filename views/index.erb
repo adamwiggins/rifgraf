@@ -4,15 +4,15 @@
 <title>rifraf</title>
 </head>
 <body>
-  <script type="text/javascript" src="swfobject.js"></script>
+  <script type="text/javascript" src="/swfobject.js"></script>
 	<div id="flashcontent">
 		<strong>You need to upgrade your Flash Player</strong>
 	</div>
 
 	<script type="text/javascript">
 		// <![CDATA[		
-		var so = new SWFObject("amline.swf", "amline", "100%", "100%", "8", "#FFFFFF");
-		so.addVariable("data_file", escape("data.xml"));
+		var so = new SWFObject("/amline.swf", "amline", "100%", "100%", "8", "#FFFFFF");
+		so.addVariable("data_file", escape("/graphs/<%= id %>/data.xml"));
 		so.addVariable("preloader_color", "#000000");
 		so.write("flashcontent");
 		// ]]>
