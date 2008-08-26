@@ -1,17 +1,21 @@
 require 'sinatra/lib/sinatra'
 
-class Point
-	attr_accessor :value, :date
-	
-	def initialize(date, value)
-		@date = date || Time.now.strftime("%Y-%m-%d %H:%I:%S")
-		@value = value
-	end
-end
+require 'rubygems'
+require 'sequel'
 
 module Points
 	def self.data
-		@@data ||= { }
+		@@data ||= make
+	end
+
+	def self.make
+		db = Sequel.sqlite
+		db.create_table :points do
+			varchar :graph, :size => 32
+			varchar :value, :size => 32
+			varchar :date, :size => 32
+		end
+		db[:points]
 	end
 end
 
@@ -20,11 +24,10 @@ get '/graphs/:id' do
 end
 
 get '/graphs/:id/data.xml' do
-	erb :data, :locals => { :points => Points.data[params[:id]] }
+	erb :data, :locals => { :points => Points.data.filter(:graph => params[:id]) }
 end
 
 post '/graphs/:id' do
-	Points.data[params[:id]] ||= [ ]
-	Points.data[params[:id]] << Point.new(params[:date], params[:value])
+	Points.data << { :graph => params[:id], :date => (params[:date] || Time.now.strftime("%Y-%m-%d %H:%I:%S")), :value => params[:value] }
 	"ok"
 end
