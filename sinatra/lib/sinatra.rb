@@ -902,7 +902,7 @@ module Sinatra
     # file, before any DSL related functions are invoked.
     def self.default_options
       return @default_options unless @default_options.nil?
-      root = File.expand_path(File.dirname($0))
+      root = File.expand_path(File.dirname(__FILE__) + '/../../')
       @default_options = {
         :run => true,
         :port => 4567,
