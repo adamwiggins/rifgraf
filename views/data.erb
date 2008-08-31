@@ -2,7 +2,7 @@
 <chart>
 	<series>
 		<% points.each_with_index do |point, i| %>
-		<value xid="<%= i %>"><%= point[:date] %></value>
+		<value xid="<%= i %>"><%= point[:date].strftime("%Y-%m-%d %H:%M:%S") %></value>
 		<% end %>
 	</series>
 	<graphs>

@@ -13,7 +13,7 @@ module Points
 		db.create_table :points do
 			varchar :graph, :size => 32
 			varchar :value, :size => 32
-			varchar :date, :size => 32
+			datetime :date
 		end
 		db[:points]
 	end
@@ -28,6 +28,6 @@ get '/graphs/:id/data.xml' do
 end
 
 post '/graphs/:id' do
-	Points.data << { :graph => params[:id], :date => (params[:date] || Time.now.strftime("%Y-%m-%d %H:%I:%S")), :value => params[:value] }
+	Points.data << { :graph => params[:id], :date => (params[:date] || Time.now), :value => params[:value] }
 	"ok"
 end
