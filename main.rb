@@ -20,11 +20,15 @@ module Points
 end
 
 get '/graphs/:id' do
-	erb :index, :locals => { :id => params[:id] }
+	erb :graph, :locals => { :id => params[:id] }
 end
 
-get '/graphs/:id/data.xml' do
-	erb :data, :locals => { :points => Points.data.filter(:graph => params[:id]) }
+get '/graphs/:id/amstock_settings.xml' do
+	erb :amstock_settings, :locals => { :id => params[:id] }
+end
+
+get '/graphs/:id/data.csv' do
+	erb :data, :locals => { :points => Points.data.filter(:graph => params[:id]).reverse_order(:date) }
 end
 
 post '/graphs/:id' do

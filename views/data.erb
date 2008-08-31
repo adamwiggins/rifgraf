@@ -1,15 +1,2 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<chart>
-	<series>
-		<% points.each_with_index do |point, i| %>
-		<value xid="<%= i %>"><%= point[:date].strftime("%Y-%m-%d %H:%M:%S") %></value>
-		<% end %>
-	</series>
-	<graphs>
-		<graph gid="1">
-			<% points.each_with_index do |point, i| %>
-			<value xid="<%= i %>"><%= point[:value] %></value>
-			<% end %>
-		</graph>
-	</graphs>
-</chart>
+<% points.each do |point| %><%= point[:date].strftime("%Y-%m-%d %H:%M:%S") %>,0,<%= point[:value] %>
+<% end %>

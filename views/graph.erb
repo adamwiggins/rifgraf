@@ -1,0 +1,21 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>rifgraf</title>
+</head>
+<body>
+	<script type="text/javascript" src="/swfobject.js"></script>
+	<div id="flashcontent">
+		<strong>The graph isn't loading.  It requires Flash, maybe you don't have it.</strong>
+	</div>
+
+	<script type="text/javascript">
+		// <![CDATA[		
+		var so = new SWFObject("/amstock.swf", "amline", "100%", "100%", "8", "#FFFFFF");
+		so.addVariable("settings_file", escape("/graphs/<%= id %>/amstock_settings.xml"));
+		so.addVariable("preloader_color", "#999999");
+		so.write("flashcontent");
+		// ]]>
+	</script>
+</body>
+</html>
