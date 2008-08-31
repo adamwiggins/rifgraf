@@ -21,7 +21,7 @@ module Points
 		db.create_table :points do
 			varchar :graph, :size => 32
 			varchar :value, :size => 32
-			datetime :date
+			timestamp :date
 		end
 		db[:points]
 	end
