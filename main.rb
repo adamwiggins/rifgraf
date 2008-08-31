@@ -15,6 +15,7 @@ module Points
 			db = connect_sqlite
 		end
 		make_table(db)
+		db[:points]
 	end
 
 	def self.make_table(db)
@@ -23,7 +24,8 @@ module Points
 			varchar :value, :size => 32
 			timestamp :date
 		end
-		db[:points]
+	rescue Sequel::DatabaseError
+		# assume table already exists
 	end
 
 	def self.connect_sqlite
