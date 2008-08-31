@@ -1,7 +1,5 @@
 require 'sinatra/lib/sinatra'
-
-require 'rubygems'
-require 'sequel'
+require 'sequel/lib/sequel'
 
 module Points
 	def self.data
