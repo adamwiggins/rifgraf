@@ -53,3 +53,8 @@ post '/graphs/:id' do
 	Points.data << { :graph => params[:id], :date => (params[:date] || Time.now), :value => params[:value] }
 	"ok"
 end
+
+delete '/graphs/:id' do
+	Points.data.delete
+	"ok"
+end
