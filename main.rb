@@ -1,4 +1,6 @@
 require 'sinatra/lib/sinatra'
+
+$LOAD_PATH.unshift 'sequel/lib'
 require 'sequel/lib/sequel'
 
 module Points
