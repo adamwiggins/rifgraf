@@ -30,7 +30,7 @@ module Points
 		Sequel.sqlite
 	end
 
-	def connect_postgres
+	def self.connect_postgres
 		Sequel.connect("postgres://#{ENV['ROLE']}:#{ENV['PASSWORD']}@#{ENV['HOST']}:5432/#{ENV['DATABASE']}")
 	end
 end
