@@ -9,13 +9,29 @@ module Points
 	end
 
 	def self.make
-		db = Sequel.sqlite
+		if ENV['DATABASE']
+			db = connect_postgres
+		else
+			db = connect_sqlite
+		end
+		make_table(db)
+	end
+
+	def self.make_table(db)
 		db.create_table :points do
 			varchar :graph, :size => 32
 			varchar :value, :size => 32
 			datetime :date
 		end
 		db[:points]
+	end
+
+	def self.connect_sqlite
+		Sequel.sqlite
+	end
+
+	def connect_postgres
+		Sequel.connect("postgres://#{ENV['ROLE']}:#{ENV['PASSWORD']}@#{ENV['HOST']}:5432/#{ENV['DATABASE']}")
 	end
 end
 
