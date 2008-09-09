@@ -37,6 +37,10 @@ module Points
 	end
 end
 
+get '/' do
+	erb :about
+end
+
 get '/graphs/:id' do
 	erb :graph, :locals => { :id => params[:id] }
 end

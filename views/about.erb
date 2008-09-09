@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Rifgraf</title>
+	<link href="main.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<div id="header">
+		<div id="logo">rifgraf</div>
+
+		<ul id="navigation">
+			<li><a href="http://adam.blog.heroku.com/past/tags/rifgraf">News</a></li>
+			<li><a href="http://github.com/adamwiggins/rifgraf.git">Source</a></li>
+		</ul>
+	</div>
+
+	<div id="content">
+
+		<p>Rifgraf is a fire-and-forget web service for collecting and displaying data collected over time.  Post your data points periodically via a rest call.  Then view a graph of the data at any point in  the future.</p>
+
+		<p>Let's try it!</p>
+
+		<p>1. Post some data points.  You'll probably do this from a cron job, but try it from an irb session  first.</p>
+
+<code>
+require 'rest_client'
+RestClient.post 'http://rifgraf.heroku.com/graphs/sample', :value =&gt; rand(99)</code>
+
+<p>Or for the Ruby-impaired, from the shell:</p>
+
+<code>
+$ curl http://rifgraf.heroku.com/graphs/sample -X POST -d value=$RANDOM
+</code>
+
+<p>Replace "sample" with whatever graph name you want.  This is the graph key.2. Visit your graph:
+http://rifgraf.heroku.com/graphs/sampleAgain, replace "sample" with the key.  You're catching on, right?</p>
+
+<p>3. Bask in the glory of the zoomable graph, with no clutter in your app's main database.</p>
+
+<p>Rifgraf automatically timestamps data that you post, although you can include a :date parameter if  you want to use a different one.  i.e.</p>
+
+<code>
+RestClient.post 'http://rifgraf.heroku.com/graphs/sample', :value => 42, :date => '1999-31-12'
+</code>
+
+<p>Clear your all data from a graph and start fresh like a good restafarian:</p>
+
+<code>
+RestClient.delete 'http://rifgraf.heroku.com/graphs/sample'
+</code>
+
+		<p>Use rifgraf as a service by posting to rifgraf.heroku.com, or <a href="http://github.com/adamwiggins/rifgraf.git">grab the source</a> and host your own.</p>
+
+		<hr/>
+
+		<p>Created by <a href="http://adam.blog.heroku.com/">Adam Wiggins</a>, released under the <a href="http://www.opensource.org/licenses/mit-license.php">MIT license</a>.</p>
+
+	</div>
+</body>
+</html>
