@@ -29,7 +29,7 @@ module Points
 	end
 
 	def self.connect_sqlite
-		Sequel.sqlite
+		Sequel.connect('sqlite://rifgraf.db')
 	end
 
 	def self.connect_postgres
