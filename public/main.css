@@ -1,100 +1,100 @@
 html, body {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 body {
-  background: #000;
-  color: #ccc;
-  font-family: 'Trebuchet MS', 'Lucida Grande', Arial, Helvetica, sans-serif;
-  line-height: 1.2em;
+	background: #000;
+	color: #ccc;
+	font-family: 'Trebuchet MS', 'Lucida Grande', Arial, Helvetica, sans-serif;
+	line-height: 1.2em;
 }
 
 img {
-  border: 0;
+	border: 0;
 }
 
 a {
-  text-decoration: underline;
-  color: #50a;
-  text-decoration: none;
+	text-decoration: underline;
+	color: #50a;
+	text-decoration: none;
 }
 a:hover {
-  color: #60c;
+	color: #60c;
 }
 
 h1, h2, h3 {
-  font-size: 1.8em;
-  margin: 1em 0 0.5em 0;
-  padding: 0 0 0.2em 0;
-  color: #666;
+	font-size: 1.8em;
+	margin: 1em 0 0.5em 0;
+	padding: 0 0 0.2em 0;
+	color: #666;
 }
 h2 {
-  font-size: 1.4em;
+	font-size: 1.4em;
 }
 h3 {
-  font-size: 1.2em;
+	font-size: 1.2em;
 }
 
 hr {
-  position: relative;
-  background: transparent;
-  background: #ccc;
-  height: 0px;
-  border: 1px solid #ccc;
+	position: relative;
+	background: transparent;
+	background: #ccc;
+	height: 0px;
+	border: 1px solid #ccc;
 }
 
 code {
-  background: #010;
-  padding: 0.7em;
-  font-family: Monaco, monospace;
-  color: #0c0;
-  border: 2px solid #040;
-  display: block;
+	background: #010;
+	padding: 0.7em;
+	font-family: Monaco, monospace;
+	color: #0c0;
+	border: 2px solid #040;
+	display: block;
 }
 
 div#content {
-  position: relative;
-  margin: 2em 2em;
+	position: relative;
+	margin: 2em 2em;
 }
 
 #content p {
-  max-width: 50em;
+	max-width: 50em;
 }
 
 div#header {
-  position: relative;
-  height: 3em;
-  margin: 0;
-  background: #306;
-  border-bottom: 3px solid #204;
-  text-align: left;
+	position: relative;
+	height: 3em;
+	margin: 0;
+	background: #306;
+	border-bottom: 3px solid #204;
+	text-align: left;
 }
 #logo {
-  position: absolute;
-  top: 15px;
-  left: 1em;
-  color: #fff;
-  font-size: 200%;
+	position: absolute;
+	top: 15px;
+	left: 1em;
+	color: #fff;
+	font-size: 200%;
 }
 
 ul#navigation {
-  font-size: 90%;
-  position: absolute;
-  bottom: 0;
-  right: 2em;
+	font-size: 90%;
+	position: absolute;
+	bottom: 0;
+	right: 2em;
 }
 ul#navigation li {
-  list-style-type: none;
-  display: inline;
-  margin-right: 1em;
+	list-style-type: none;
+	display: inline;
+	margin-right: 1em;
 }
 ul#navigation a {
-  color: #ccc;
-  text-decoration: none;
+	color: #ccc;
+	text-decoration: none;
 }
 ul#navigation a:hover {
-  color: #fff;
-  border-bottom: 2px solid #fff;
+	color: #fff;
+	border-bottom: 2px solid #fff;
 }
 
