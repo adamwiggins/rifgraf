@@ -22,11 +22,12 @@
 
 		<p>Let's try it!</p>
 
-		<p>1. Post some data points.  You'll probably do this from a cron job, but try it from an irb session  first.</p>
+		<h3>1. Post some data points.</h3>
+		<p>You'll probably do this from a cron job, but try it from an irb session  first.</p>
 
 <code>
-require 'rest_client'
-RestClient.post 'http://rifgraf.heroku.com/graphs/sample', :value =&gt; rand(99)</code>
+RestClient.post 'http://rifgraf.heroku.com/graphs/sample', :value =&gt; rand(99)
+</code>
 
 <p>Or for the Ruby-impaired, from the shell:</p>
 
@@ -34,15 +35,22 @@ RestClient.post 'http://rifgraf.heroku.com/graphs/sample', :value =&gt; rand(99)
 $ curl http://rifgraf.heroku.com/graphs/sample -X POST -d value=$RANDOM
 </code>
 
-<p>Replace "sample" with whatever graph name you want.  This is the graph key.2. Visit your graph:
-http://rifgraf.heroku.com/graphs/sampleAgain, replace "sample" with the key.  You're catching on, right?</p>
+<p>Replace "sample" with whatever graph name you want.  This is the graph key.</p>
 
-<p>3. Bask in the glory of the zoomable graph, with no clutter in your app's main database.</p>
+<h3>2. Visit your graph.</h3>
+
+<p><a href="http://rifgraf.heroku.com/graphs/sample">http://rifgraf.heroku.com/graphs/sample</a></p>
+
+<p>Again, replace "sample" with the key.  You're catching on, right?</p>
+
+<h3>3. Bask in the glory of the zoomable graph.</h3>
+
+<p>With no clutter in your app's main database.</p>
 
 <p>Rifgraf automatically timestamps data that you post, although you can include a :date parameter if  you want to use a different one.  i.e.</p>
 
 <code>
-RestClient.post 'http://rifgraf.heroku.com/graphs/sample', :value => 42, :date => '1999-31-12'
+RestClient.post 'http://rifgraf.heroku.com/graphs/sample', :value =&gt; 42, :date =&gt; '1999-31-12'
 </code>
 
 <p>Clear your all data from a graph and start fresh like a good restafarian:</p>

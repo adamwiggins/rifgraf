@@ -4,9 +4,9 @@ html, body {
 }
 
 body {
-  background: #fff;
-  color: #000;
-  font-family: 'Lucida Grande', Arial, Helvetica, sans-serif;
+  background: #000;
+  color: #ccc;
+  font-family: 'Trebuchet MS', 'Lucida Grande', Arial, Helvetica, sans-serif;
   line-height: 1.2em;
 }
 
@@ -16,11 +16,11 @@ img {
 
 a {
   text-decoration: underline;
-  color: #41C0C0;
+  color: #50a;
   text-decoration: none;
 }
 a:hover {
-  color: #6fc;
+  color: #60c;
 }
 
 h1, h2, h3 {
@@ -45,12 +45,12 @@ hr {
 }
 
 code {
-  background: black;
+  background: #010;
   padding: 0.7em;
   font-family: Monaco, monospace;
-  color: #ccc;
-  border: 1px solid #004040;
-  overflow: auto;
+  color: #0c0;
+  border: 2px solid #040;
+  display: block;
 }
 
 div#content {
@@ -66,17 +66,16 @@ div#header {
   position: relative;
   height: 3em;
   margin: 0;
-  background: black;
-  border-bottom: 2px solid #555;
+  background: #306;
+  border-bottom: 3px solid #204;
   text-align: left;
 }
 #logo {
   position: absolute;
   top: 15px;
   left: 1em;
-  color: #0dd;
+  color: #fff;
   font-size: 200%;
-  font-family: serif;
 }
 
 ul#navigation {
@@ -91,10 +90,11 @@ ul#navigation li {
   margin-right: 1em;
 }
 ul#navigation a {
-  color: #41C0C0;
+  color: #ccc;
   text-decoration: none;
 }
 ul#navigation a:hover {
-  color: #0ff;
-  border-bottom: 2px solid #0ff;
+  color: #fff;
+  border-bottom: 2px solid #fff;
 }
+
