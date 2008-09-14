@@ -22,7 +22,7 @@ module Points
 		db.create_table :points do
 			varchar :graph, :size => 32
 			varchar :value, :size => 32
-			timestamp :date
+			timestamp :timestamp
 		end
 	rescue Sequel::DatabaseError
 		# assume table already exists
@@ -50,11 +50,11 @@ get '/graphs/:id/amstock_settings.xml' do
 end
 
 get '/graphs/:id/data.csv' do
-	erb :data, :locals => { :points => Points.data.filter(:graph => params[:id]).reverse_order(:date) }
+	erb :data, :locals => { :points => Points.data.filter(:graph => params[:id]).reverse_order(:timestamp) }
 end
 
 post '/graphs/:id' do
-	Points.data << { :graph => params[:id], :date => (params[:date] || Time.now), :value => params[:value] }
+	Points.data << { :graph => params[:id], :timestamp => (params[:timestamp] || Time.now), :value => params[:value] }
 	"ok"
 end
 

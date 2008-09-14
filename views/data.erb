@@ -1,2 +1,2 @@
-<% points.each do |point| %><%= point[:date].strftime("%Y-%m-%d %H:%M:%S") %>,0,<%= point[:value] %>
+<% points.each do |point| %><%= point[:timestamp].strftime("%Y-%m-%d %H:%M:%S") %>,0,<%= point[:value] %>
 <% end %>

@@ -18,52 +18,53 @@
 
 	<div id="content">
 
-		<p>Rifgraf is a fire-and-forget web service for collecting and displaying data collected over time.  Post your data points periodically via a rest call.  Then view a graph of the data at any point in  the future.</p>
+		<p>Rifgraf is a fire-and-forget web service for displaying graphs of data collected over time.  Post your data points periodically via a rest call.  Then view a graph of the data at any point in  the future.</p>
 
 		<p>Let's try it!</p>
 
 		<h3>1. Post some data points.</h3>
-		<p>You'll probably do this from a cron job, but try it from an irb session  first.</p>
 
-<code>
-RestClient.post 'http://rifgraf.heroku.com/graphs/sample', :value =&gt; rand(99)
-</code>
+		<p>You'll probably do this from a cron job, but try it from an irb session first.</p>
 
-<p>Or for the Ruby-impaired, from the shell:</p>
+		<code>
+		RestClient.post 'http://rifgraf.heroku.com/graphs/sample', :value =&gt; rand(99)
+		</code>
 
-<code>
-$ curl http://rifgraf.heroku.com/graphs/sample -X POST -d value=$RANDOM
-</code>
+		<p>Or for the Ruby-impaired, from the shell:</p>
 
-<p>Replace "sample" with whatever graph name you want.  This is the graph key.</p>
+		<code>
+		$ curl http://rifgraf.heroku.com/graphs/sample -X POST -d value=$RANDOM
+		</code>
 
-<h3>2. Visit your graph.</h3>
+		<p>Replace "sample" with whatever graph name you want.  This is the graph key.</p>
 
-<p><a href="http://rifgraf.heroku.com/graphs/sample">http://rifgraf.heroku.com/graphs/sample</a></p>
+		<h3>2. Visit your graph.</h3>
 
-<p>Again, replace "sample" with the key.  You're catching on, right?</p>
+		<p><a href="http://rifgraf.heroku.com/graphs/sample">http://rifgraf.heroku.com/graphs/sample</a></p>
 
-<h3>3. Bask in the glory of the zoomable graph.</h3>
+		<p>Replace "sample" with your chosen key.  You're catching on, right?</p>
 
-<p>With no clutter in your app's main database.</p>
+		<h3>3. Bask in the glory of the zoomable graph.</h3>
 
-<p>Rifgraf automatically timestamps data that you post, although you can include a :date parameter if  you want to use a different one.  i.e.</p>
+		<p>...with no clutter in your app's main database.</p>
 
-<code>
-RestClient.post 'http://rifgraf.heroku.com/graphs/sample', :value =&gt; 42, :date =&gt; '1999-31-12'
-</code>
+		<p>Rifgraf automatically timestamps data that you post, although you can include a :timestamp parameter if  you want to use a different one.  i.e.</p>
 
-<p>Clear your all data from a graph and start fresh like a good restafarian:</p>
+		<code>
+		RestClient.post 'http://rifgraf.heroku.com/graphs/sample', :value =&gt; 42, :timestamp =&gt; '1999-31-12'
+		</code>
 
-<code>
-RestClient.delete 'http://rifgraf.heroku.com/graphs/sample'
-</code>
+		<p>Clear your all data from a graph and start fresh - the "how" won't be surprising to good restafarians:</p>
 
-		<p>Use rifgraf as a service by posting to rifgraf.heroku.com, or <a href="http://github.com/adamwiggins/rifgraf.git">grab the source</a> and host your own.</p>
+		<code>
+		RestClient.delete 'http://rifgraf.heroku.com/graphs/sample'
+		</code>
 
-		<hr/>
+	<p>Use rifgraf as a service by posting to rifgraf.heroku.com, or <a href="http://github.com/adamwiggins/rifgraf.git">grab the source</a> and host your own.</p>
 
-		<p>Created by <a href="http://adam.blog.heroku.com/">Adam Wiggins</a>, released under the <a href="http://www.opensource.org/licenses/mit-license.php">MIT license</a>.</p>
+	<hr/>
+
+	<p>Created by <a href="http://adam.blog.heroku.com/">Adam Wiggins</a>, released under the <a href="http://www.opensource.org/licenses/mit-license.php">MIT license</a>.</p>
 
 	</div>
 </body>
