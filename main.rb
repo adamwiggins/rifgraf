@@ -24,8 +24,6 @@ module Points
 			varchar :value, :size => 32
 			timestamp :timestamp
 		end
-	rescue Sequel::DatabaseError
-		# assume table already exists
 	end
 
 	def self.connect_sqlite
