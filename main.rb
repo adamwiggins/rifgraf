@@ -9,11 +9,7 @@ module Points
 	end
 
 	def self.make
-		if ENV['DATABASE']
-			db = connect_postgres
-		else
-			db = connect_sqlite
-		end
+		db = Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://rifgraf.db')
 		make_table(db)
 		db[:points]
 	end
@@ -26,14 +22,6 @@ module Points
 		end
 	rescue Sequel::DatabaseError
 		# assume table already exists
-	end
-
-	def self.connect_sqlite
-		Sequel.connect('sqlite://rifgraf.db')
-	end
-
-	def self.connect_postgres
-		Sequel.connect("postgres://#{ENV['ROLE']}:#{ENV['PASSWORD']}@#{ENV['HOST']}:5432/#{ENV['DATABASE']}")
 	end
 end
 
