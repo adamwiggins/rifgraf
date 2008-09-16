@@ -30,6 +30,7 @@ get '/' do
 end
 
 get '/graphs/:id' do
+	throw :halt, [ 404, "No such graph" ] unless Points.data.filter(:graph => params[:id]).count > 0
 	erb :graph, :locals => { :id => params[:id] }
 end
 
