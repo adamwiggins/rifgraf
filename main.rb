@@ -48,6 +48,6 @@ post '/graphs/:id' do
 end
 
 delete '/graphs/:id' do
-	Points.data.delete
+	Points.data.filter(:graph => params[:id]).delete
 	"ok"
 end
