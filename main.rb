@@ -30,12 +30,16 @@ get '/' do
 end
 
 get '/graphs/:id' do
-	throw :halt, [ 404, "No such graph" ] unless Points.data.filter(:graph => params[:id]).count > 0
-	erb :graph, :locals => { :id => params[:id] }
+	graphs = [ params[:id] ] + (params[:and] || '').split(',')
+	graphs.each do |graph|
+		throw :halt, [ 404, "No such graph \"#{graph}\"" ] unless Points.data.filter(:graph => graph).count > 0
+	end
+	erb :graph, :locals => { :id => params[:id], :others => params[:and] }
 end
 
 get '/graphs/:id/amstock_settings.xml' do
-	erb :amstock_settings, :locals => { :id => params[:id] }
+	graphs = [ params[:id] ] + (params[:and] || '').split(',')
+	erb :amstock_settings, :locals => { :graphs => graphs }
 end
 
 get '/graphs/:id/data.csv' do
