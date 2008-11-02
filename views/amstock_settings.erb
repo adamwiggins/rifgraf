@@ -12,7 +12,9 @@
 	<data_sets> 
 		<% graphs.each do |id| %>
 			<data_set>
-			<compare_list_box selected="true">true</compare_list_box>
+				<% if graphs.size > 1 %>
+					<compare_list_box selected="true">true</compare_list_box>
+				<% end %>
 
 				<title><%= id %></title>
 				<short><%= id %></short>
@@ -50,6 +52,10 @@
 			</legend>
 
 			<column_width>100</column_width>
+
+			<comparing>
+				<recalculate>false</recalculate>
+			</comparing>
 
 			<graphs>
 				<graph>
