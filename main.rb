@@ -1,7 +1,7 @@
-require 'sinatra/lib/sinatra'
+require File.dirname(__FILE__) + '/sinatra/lib/sinatra'
 
-$LOAD_PATH.unshift 'sequel/lib'
-require 'sequel/lib/sequel'
+$LOAD_PATH.unshift(File.dirname(__FILE__) + '/sequel/lib')
+require 'sequel'
 
 module Points
 	def self.data
