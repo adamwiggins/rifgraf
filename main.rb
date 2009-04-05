@@ -1,7 +1,5 @@
-require 'sinatra/lib/sinatra'
-
-$LOAD_PATH.unshift 'sequel/lib'
-require 'sequel/lib/sequel'
+require 'sinatra'
+require 'sequel'
 
 module Points
 	def self.data
