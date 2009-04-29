@@ -10,23 +10,29 @@
 		</letters>
 	</number_format>
 	<data_sets> 
-		<data_set>
-			<title><%= id %></title>
-			<short><%= id %></short>
-			<color>004090</color>
-			<file_name>/graphs/<%= id %>/data.csv</file_name>
-			<csv>
-				<reverse>true</reverse>
-				<separator>,</separator>
-				<date_format>YYYY-MM-DD hh:mm:ss</date_format>
-				<decimal_separator>.</decimal_separator>
-				<columns>
-					<column>date</column>
-					<column>volume</column>
-					<column>close</column>
-				</columns>
-			</csv>
-		</data_set>
+		<% graphs.each do |id| %>
+			<data_set>
+				<% if graphs.size > 1 %>
+					<compare_list_box selected="true">true</compare_list_box>
+				<% end %>
+
+				<title><%= id %></title>
+				<short><%= id %></short>
+				<color><%= sprintf("%02x02x02x", rand(200), rand(200), rand(200)) %></color>
+				<file_name>/graphs/<%= id %>/data.csv</file_name>
+				<csv>
+					<reverse>true</reverse>
+					<separator>,</separator>
+					<date_format>YYYY-MM-DD hh:mm:ss</date_format>
+					<decimal_separator>.</decimal_separator>
+					<columns>
+						<column>date</column>
+						<column>volume</column>
+						<column>close</column>
+					</columns>
+				</csv>
+			</data_set>
+		<% end %>
 	</data_sets>
 
 	<charts>
@@ -47,11 +53,17 @@
 
 			<column_width>100</column_width>
 
+			<comparing>
+				<recalculate>false</recalculate>
+			</comparing>
+
 			<graphs>
 				<graph>
 					<data_sources>
 						<close>close</close>
 					</data_sources>
+
+					<compare_source>close</compare_source>
 
 					<bullet>round_outline</bullet>
 
@@ -66,7 +78,7 @@
 	</charts>
 
 	<data_set_selector>
-		<enabled>false</enabled>
+		<enabled><%= graphs.size > 1 ? 'true' : 'false' %></enabled>
 	</data_set_selector>
 
 	<period_selector>

@@ -23,17 +23,25 @@ module Points
 	end
 end
 
+helpers do
+	def graphs_from_params(seperator)
+		[ params[:id] ] + (params[:and] || '').split(seperator)
+	end
+end
+
 get '/' do
 	erb :about
 end
 
 get '/graphs/:id' do
-	throw :halt, [ 404, "No such graph" ] unless Points.data.filter(:graph => params[:id]).count > 0
-	erb :graph, :locals => { :id => params[:id] }
+	graphs_from_params(',').each do |graph|
+		throw :halt, [ 404, "No such graph \"#{graph}\"" ] unless Points.data.filter(:graph => graph).count > 0
+	end
+	erb :graph, :locals => { :id => params[:id], :others => (params[:and] || '').gsub(/,/, '+') }
 end
 
 get '/graphs/:id/amstock_settings.xml' do
-	erb :amstock_settings, :locals => { :id => params[:id] }
+	erb :amstock_settings, :locals => { :graphs => graphs_from_params(' ') }
 end
 
 get '/graphs/:id/data.csv' do

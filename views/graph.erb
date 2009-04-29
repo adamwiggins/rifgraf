@@ -12,7 +12,7 @@
 	<script type="text/javascript">
 		// <![CDATA[
 		var so = new SWFObject("/amstock.swf", "amline", "100%", "100%", "8", "#FFFFFF");
-		so.addVariable("settings_file", escape("/graphs/<%= id %>/amstock_settings.xml"));
+		so.addVariable("settings_file", escape("/graphs/<%= id %>/amstock_settings.xml?and=<%= others %>"));
 		so.addVariable("preloader_color", "#999999");
 		so.write("flashcontent");
 		// ]]>
